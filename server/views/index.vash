@@ -1,0 +1,11 @@
+<!doctype html>
+<html>
+    <head>
+        <title>@model.title</title>
+    </head>
+    <body>
+        <div>
+            <p>Hola (Generado con Vash desde el servidor) Hola</p>
+        </div>
+    </body>
+</html>
