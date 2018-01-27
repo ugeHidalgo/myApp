@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = {
     app : {
         title : 'MyApp (by Uge Hidalgo 2018)',

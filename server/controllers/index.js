@@ -1,12 +1,8 @@
-/* (function (controllers){
-    var homeController = require ('./homeController');
+'use strict';
 
-    controllers.init = function (app) {
-        homeController.init(app);
-    };
-
-})(module.exports); */
-
+/**
+ * Module dependencies.
+ */
 var homeController = require ('./homeController');
 
 module.exports.init = function (app){

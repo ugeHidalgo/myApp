@@ -1,11 +1,12 @@
-<!doctype html>
-<html>
-    <head>
-        <title>@model.title</title>
-    </head>
-    <body>
-        <div>
-            <p>Welcome!!! (Generado con Vash desde el servidor)</p>
-        </div>
-    </body>
-</html>
+@html.extend('layout', function(model) {
+  @html.block("scripts", function (model){
+        @*  <link href="/css/creative.min.css" rel="stylesheet" /> *@
+    })
+  @html.block("body", function (model) {
+        @if (model.error) {
+            <p class="text-error">Error occurred: @model.error</p>
+        }
+
+        <p>this is the page body !!!</p>
+    })
+  })
