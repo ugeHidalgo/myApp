@@ -1,6 +1,6 @@
 module.exports = {
     app : {
-        title : 'My App(by Uge)',
+        title : 'MyApp (by Uge Hidalgo 2018)',
         description: 'Full-Stack JavaScript with MongoDB, Express, AngularJS, and Node.js',
         keywords: 'mongodb, express, angularjs, node.js, mongoose, passport',
         googleAnalyticsTrackingID: process.env.GOOGLE_ANALYTICS_TRACKING_ID || 'GOOGLE_ANALYTICS_TRACKING_ID'
