@@ -15,6 +15,7 @@
     "cookie-parser": "^1.4.3",
     "express": "^4.16.2",
     "express-session": "^1.15.6",
+    "method-override": "^2.3.10",
     "request": "^2.83.0",
     "vash": "^0.12.4"
   }

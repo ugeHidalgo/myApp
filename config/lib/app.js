@@ -1,43 +1,18 @@
 'use strict';
 
+
+/**
+ * Module dependencies.
+ */
 var config = require('../config'),
     chalk = require('chalk'),
-    path = require('path'),
-    express = require ('express'),
-    bodyParser = require('body-parser'),
-    flash = require('connect-flash'),
-    cookieParser = require('cookie-parser'),
-    expressSession = require('express-session'),
-    controllers = require ('../../server/controllers'); 
+    express = require ('./express'); 
     
 
 module.exports.init = function init(callback) {
   
     // Initialize express
-    var app = express(); 
-
-    //Set the view engine and the root folder for the server views.
-    app.set('view engine', 'vash');
-    app.set('views', path.resolve('./server/views'));
-
-    //Set the public static resource folder.
-    app.use('/', express.static(path.resolve('./public'), { maxAge: 86400000 }));
-
-    // parse urlencoded request bodies into req.body.
-    app.use(bodyParser.urlencoded({extended: false}));
-    app.use(bodyParser.json());
-
-    //Support flash.
-    app.use(cookieParser());
-    app.use(expressSession({
-        secret: 'anystringhereisvalidtoencript',
-        resave: true,
-        saveUninitialized: true
-    }));
-    app.use(flash());
-
-    //Controllers initialization.
-    controllers.init(app);
+    var app = express.init();
 
     if (callback) callback(app, config);
 }; 
@@ -47,18 +22,18 @@ module.exports.start = function start(callback) {
 
     me.init(function (app, config) {
 
-        // Start the app by listening on <port> at <host>
-        app.listen(config.port, config.host, function () {
+        var host = (config.host ==='0.0.0.0') ? 'localhost' : config.host,
+            serverUrl = (process.env.NODE_ENV === 'secure' ? 'https://' : 'http://') + host + ':' + config.port;
 
-            // Create server URL
-            var server = (process.env.NODE_ENV === 'secure' ? 'https://' : 'http://') + config.host + ':' + config.port;
+        // Start the app by listening on <port> at <host>
+        app.listen(config.port, config.host, function (serverUrl) {
 
             // Logging initialization
             console.log('---------------------------');
             console.log(chalk.green(config.app.title));
             console.log();
             console.log(chalk.green('Environment:     ' + process.env.NODE_ENV));
-            console.log(chalk.green('Server:          ' + server));
+            console.log(chalk.green('Server:          ' + serverUrl));
             console.log(chalk.green('Database:        ' + config.db.uri));
             console.log(chalk.blue('Waiting for requests...'));
             console.log('----------------------------');
