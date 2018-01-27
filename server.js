@@ -1,4 +1,6 @@
-var http = require ('http'),
+var config = require('./config/config'),
+    chalk = require('chalk'),
+    http = require ('http'),
     express = require ('express'),
     bodyParser = require('body-parser');
     flash = require('connect-flash');
@@ -30,9 +32,20 @@ app.use(flash());
 //Controllers initialization.
 controllers.init(app);
 
-var server = http.createServer(app);
+// Set NODE_ENV to 'development' for a while only, needs to be added to a gulp task.
+process.env.NODE_ENV = 'development';
 
-server.listen(process.env.PORT || 5000, function() {
-    console.log (server);
-    console.log("%s listening at %s ", server.name, server.url);
+
+var server = http.createServer(app),
+    serverUrl = (process.env.NODE_ENV === 'secure' ? 'https://' : 'http://') + config.host + ':' + config.port;
+
+server.listen(process.env.PORT || config.port, function() {
+    console.log('--');
+    console.log(chalk.green(config.app.title));
+    console.log();
+    console.log(chalk.green('Environment:     ' + process.env.NODE_ENV));
+    console.log(chalk.green('Server:          ' + serverUrl));
+    console.log(chalk.green('Database:        ' + config.db.uri));
+    console.log();
+    console.log('--');
 });
