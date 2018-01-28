@@ -5,8 +5,11 @@
  */
 var config = require('../../config/config');
 
+
 module.exports.init = function (app) {
-    app.get ('/', function (request, response){
-        response.render ('index', { title: config.app.title });
+
+    //Main page
+    app.get('/', function (request, res){
+        res.render ('index', { title: config.app.title });
     });
 };
