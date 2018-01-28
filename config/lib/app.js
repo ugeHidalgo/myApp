@@ -9,7 +9,6 @@ var config = require('../config'),
     mongooseService = require ('./mongoose'),
     express = require ('./express'); 
     
-
 module.exports.init = function init(callback) {
   
     mongooseService.connect (function(){
@@ -39,7 +38,7 @@ module.exports.start = function start(callback) {
             console.log();
             console.log();
             console.log('----------------------------------------------');
-            console.log(chalk.green(config.app.title));
+            console.log(chalk.green.bold(config.app.title));
             console.log();
             console.log(chalk.green('Environment:     ' + process.env.NODE_ENV));
             console.log(chalk.green('Server:          ' + serverUrl));

@@ -6,7 +6,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Eugenio Hidalgo",
+  "author": {
+    "name": "Uge Hidalgo",
+    "email": "ugehidalgo@hotmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ugeHidalgo/myApp"
+  },
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.2",
@@ -20,5 +27,9 @@
     "mongoose": "^5.0.1",
     "request": "^2.83.0",
     "vash": "^0.12.4"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-nodemon": "^2.2.1"
   }
 }
