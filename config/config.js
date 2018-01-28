@@ -1,3 +1,4 @@
+/*jslint node: true */
 'use strict';
 
 module.exports = {
@@ -35,4 +36,4 @@ module.exports = {
         certificate: './config/sslcerts/cert.pem',
         caBundle: './config/sslcerts/cabundle.crt'
     }
-}
+};

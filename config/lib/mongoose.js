@@ -1,3 +1,4 @@
+/*jslint node: true */
 'use strict';
 
 /**
@@ -28,7 +29,7 @@ module.exports.connect = function init(callback) {
         console.log('----------------------------------------------');
         console.log(chalk.green.bold(config.app.title));
         console.log();
-        console.log(chalk.green('Database:        ' + config.db.uri));
+        console.log(chalk.green('Database: ' + config.db.uri));
         console.error(chalk.red.bold('Could not connect to MongoDB!'));
         console.log(chalk.green('Please check connection configuration on config.js.'));
         console.log('----------------------------------------------');
