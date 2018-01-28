@@ -11,7 +11,8 @@ var config = require('../config'),
     cookieParser = require('cookie-parser'),
     methodOverride = require('method-override'),
     path = require('path'),
-    controllers = require ('../../server/controllers');
+    controllers = require ('../../server/controllers'),
+    coreRoutes = require ('../../server/routes/coreRoutes');
 
 // Initialize application middleware
 module.exports.initMiddleware = function (app) {
@@ -69,6 +70,11 @@ module.exports.initControllers = function (app) {
     controllers.init(app);
 };
 
+//Core routes initialization (Must be the done before controller initialization.)
+module.exports.initCoreRoutes = function (app) {
+    coreRoutes.init(app);
+};
+
     
 
 //Initialize the Express application
@@ -88,8 +94,11 @@ module.exports.init = function (db) {
     // Initialize Express session
     me.initSession(app);
 
-    //Initializa controllers
+    //Initialize controllers
     me.initControllers(app);
+
+    //Initialize core routes (error and not found handling)
+    me.initCoreRoutes(app);
   
     return app;
 };
