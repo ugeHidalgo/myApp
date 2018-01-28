@@ -10,8 +10,11 @@ module.exports = {
     port: process.env.PORT || 3000,
     host: process.env.HOST || '0.0.0.0',
     db : {
-        //uri : 'mongodb://localhost:27017/windlogDB' //DB on local computer
-        uri : 'mongodb://ugeHidalgo:gunnar12A@ds149501.mlab.com:49501/windlogdb' //DB on mLab
+        uri : 'mongodb://localhost:27017/windlogDB', //DB on local computer
+        //uri : 'mongodb://ugeHidalgo:gunnar12A@ds149501.mlab.com:49501/windlogdb', //DB on mLab
+        options: {},
+        // Enable mongoose debug mode
+        debug: process.env.MONGODB_DEBUG || false
     },
     sessionSecret: process.env.SESSION_SECRET || 'anystringhereisvalidtoencript',
     sessionCookie: {
