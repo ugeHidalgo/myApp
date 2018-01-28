@@ -16,17 +16,24 @@ gulp.task('develop', function(){
 });
 
 // Lint JS server side files.
-gulp.task('lintServer', function() {
-  var serverJsFiles = [
-    'server.js',  
-    './config/**/*.js', 
-    './server/**/*.js' 
-  ];
+gulp.task('lint', function() {
+  var serverJsFiles = [ 
+        'server.js',  
+        './config/**/*.js', 
+        './server/**/*.js' ],
 
-  return gulp.src(serverJsFiles)
+      clientJsFiles = [
+        //Put client side js files here
+      ],
+      assets = _.union (
+        serverJsFiles,
+        clientJsFiles
+      )
+
+  return gulp.src(assets)
       .pipe(jshint())
       .pipe(jshint.reporter('default'));
 });
 
 // Default Task
-gulp.task('default', ['develop', 'lintServer']);
+gulp.task('default', ['develop', 'lint']);
