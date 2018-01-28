@@ -36,5 +36,15 @@ module.exports.connect = function init(callback) {
     });
 };
 
+module.exports.disconnect = function (cb) {
+    mongoose.connection.db
+      .close(function (err) {
+        console.log('--------------------------');
+        console.info(chalk.yellow('Disconnected from MongoDB.'));
+        console.log('--------------------------');       
+        return cb(err);
+      });
+  };
+
 module.exports.loadModels = function init(callback) {
 };
